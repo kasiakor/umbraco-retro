@@ -10,6 +10,11 @@ namespace UmbracoRetro.Controllers
             return PartialView("~/Views/Partials/SiteLayout/_Header.cshtml");
         }
 
+        public ActionResult RenderIntro()
+        {
+            return PartialView("~/Views/Partials/SiteLayout/_Intro.cshtml");
+        }
+
         public ActionResult RenderFooter()
         {
             return PartialView("~/Views/Partials/SiteLayout/_Footer.cshtml");
