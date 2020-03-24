@@ -130,4 +130,10 @@
       <file name="/umbraco_client/splitbutton/InsertMacroSplitButton.js" />
     </files>
   </item>
+  <item key="L3VtYnJhY28vYXNzZXRzL2Nzcy91bWJyYWNvLmNzczsvdW1icmFjb19jbGllbnQvdWkvZGVmYXVsdC5jc3M7" file="c:\users\kasia\documents\visual studio 2015\Projects\UmbracoRetro\UmbracoRetro\App_Data\TEMP\ClientDependency\1_271ea770618e498ca7eb8c76130641c1.cdC" compression="gzip" version="1">
+    <files>
+      <file name="/umbraco/assets/css/umbraco.css" />
+      <file name="/umbraco_client/ui/default.css" />
+    </files>
+  </item>
 </map>
