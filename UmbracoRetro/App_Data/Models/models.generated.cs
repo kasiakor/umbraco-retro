@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "301e473af7276ea0")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "1b8dfe0e229377e4")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
@@ -59,6 +59,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Sub Title: Enter sub title
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public IHtmlString SubTitle
+		{
+			get { return TitleControls.GetSubTitle(this); }
+		}
+
+		///<summary>
 		/// Title: Enter the title, if blank the name of the page will be used
 		///</summary>
 		[ImplementPropertyType("title")]
@@ -91,6 +100,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Blog, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Sub Title: Enter sub title
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public IHtmlString SubTitle
+		{
+			get { return TitleControls.GetSubTitle(this); }
 		}
 
 		///<summary>
@@ -129,6 +147,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Sub Title: Enter sub title
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public IHtmlString SubTitle
+		{
+			get { return TitleControls.GetSubTitle(this); }
+		}
+
+		///<summary>
 		/// Title: Enter the title, if blank the name of the page will be used
 		///</summary>
 		[ImplementPropertyType("title")]
@@ -161,6 +188,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Services, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Sub Title: Enter sub title
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public IHtmlString SubTitle
+		{
+			get { return TitleControls.GetSubTitle(this); }
 		}
 
 		///<summary>
@@ -199,6 +235,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Sub Title: Enter sub title
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public IHtmlString SubTitle
+		{
+			get { return TitleControls.GetSubTitle(this); }
+		}
+
+		///<summary>
 		/// Title: Enter the title, if blank the name of the page will be used
 		///</summary>
 		[ImplementPropertyType("title")]
@@ -231,6 +276,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Contact, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Sub Title: Enter sub title
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public IHtmlString SubTitle
+		{
+			get { return TitleControls.GetSubTitle(this); }
 		}
 
 		///<summary>
@@ -293,6 +347,9 @@ namespace Umbraco.Web.PublishedContentModels
 	/// <summary>Title Controls</summary>
 	public partial interface ITitleControls : IPublishedContent
 	{
+		/// <summary>Sub Title</summary>
+		IHtmlString SubTitle { get; }
+
 		/// <summary>Title</summary>
 		string Title { get; }
 	}
@@ -321,6 +378,18 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Sub Title: Enter sub title
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public IHtmlString SubTitle
+		{
+			get { return GetSubTitle(this); }
+		}
+
+		/// <summary>Static getter for Sub Title</summary>
+		public static IHtmlString GetSubTitle(ITitleControls that) { return that.GetPropertyValue<IHtmlString>("subTitle"); }
 
 		///<summary>
 		/// Title: Enter the title, if blank the name of the page will be used
