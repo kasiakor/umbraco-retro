@@ -86,8 +86,10 @@ namespace UmbracoRetro.Controllers
             return cachedObject;
         }
 
-
-
+        public ActionResult RenderTitleControls()
+        {
+            return PartialView("~/Views/Partials/SiteLayout/_TitleControls.cshtml");
+        }
 
         public ActionResult RenderIntro()
         {

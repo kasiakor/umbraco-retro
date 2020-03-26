@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "9aeafd647bec1c85")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "301e473af7276ea0")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
@@ -42,7 +42,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IIntroControls
+	public partial class Home : PublishedContentModel, IIntroControls, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -73,11 +73,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return IntroControls.GetIntro(this); }
 		}
+
+		///<summary>
+		/// Title: Enter the title, if blank the name of the page will be used
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return TitleControls.GetTitle(this); }
+		}
 	}
 
 	/// <summary>Blog</summary>
 	[PublishedContentModel("blog")]
-	public partial class Blog : PublishedContentModel
+	public partial class Blog : PublishedContentModel, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "blog";
@@ -99,11 +108,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Title: Enter the title, if blank the name of the page will be used
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return TitleControls.GetTitle(this); }
+		}
 	}
 
 	/// <summary>Portfolio</summary>
 	[PublishedContentModel("portfolio")]
-	public partial class Portfolio : PublishedContentModel
+	public partial class Portfolio : PublishedContentModel, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "portfolio";
@@ -125,11 +143,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Title: Enter the title, if blank the name of the page will be used
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return TitleControls.GetTitle(this); }
+		}
 	}
 
 	/// <summary>Services</summary>
 	[PublishedContentModel("services")]
-	public partial class Services : PublishedContentModel
+	public partial class Services : PublishedContentModel, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "services";
@@ -150,6 +177,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Services, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Title: Enter the title, if blank the name of the page will be used
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return TitleControls.GetTitle(this); }
 		}
 	}
 
@@ -190,7 +226,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Contact</summary>
 	[PublishedContentModel("contact")]
-	public partial class Contact : PublishedContentModel
+	public partial class Contact : PublishedContentModel, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "contact";
@@ -211,6 +247,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Contact, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Title: Enter the title, if blank the name of the page will be used
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return TitleControls.GetTitle(this); }
 		}
 	}
 

@@ -361,6 +361,8 @@
     <Content Include="Views\Portfolio.cshtml" />
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\Contact.cshtml" />
+    <Content Include="Views\Services.cshtml" />
+    <Content Include="Views\Partials\SiteLayout\_TitleControls.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
