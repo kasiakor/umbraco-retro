@@ -32,6 +32,8 @@ namespace UmbracoRetro.Controllers
             const int HOME_PAGE_POSITION_IN_PATH = 1;
             int homePageId = int.Parse(CurrentPage.Path.Split(',')[HOME_PAGE_POSITION_IN_PATH]);
             IPublishedContent homePage = Umbraco.Content(homePageId);
+            //below is alternative way to find home page
+            //IPublishedContent homePage = CurrentPage.AncestorOrSelf(1).DescendantsOrSelf().Where(x => x.DocumentTypeAlias == "home").FirstOrDefault();
             List<NavigationListItem> nav = new List<NavigationListItem>();
             nav.Add(new NavigationListItem(new NavigationLink(homePage.Url, homePage.Name)));
             // child nav are the remaining links like porfolio, blog ..
