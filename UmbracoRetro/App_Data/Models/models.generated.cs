@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "3944a4a4d941968b")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "315455a473f469d3")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
@@ -123,7 +123,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Portfolio</summary>
 	[PublishedContentModel("portfolio")]
-	public partial class Portfolio : PublishedContentModel, ITitleControls
+	public partial class Portfolio : PublishedContentModel, ITitleControls, ITopNavigationControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "portfolio";
@@ -162,6 +162,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Title
 		{
 			get { return TitleControls.GetTitle(this); }
+		}
+
+		///<summary>
+		/// umbraco Navi Hide: Tick to exclude form navigation
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return TopNavigationControls.GetUmbracoNaviHide(this); }
 		}
 	}
 
@@ -211,7 +220,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>About</summary>
 	[PublishedContentModel("about")]
-	public partial class About : PublishedContentModel, IBasicContentControls, ITitleControls
+	public partial class About : PublishedContentModel, IBasicContentControls, ITitleControls, ITopNavigationControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "about";
@@ -259,6 +268,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Title
 		{
 			get { return TitleControls.GetTitle(this); }
+		}
+
+		///<summary>
+		/// umbraco Navi Hide: Tick to exclude form navigation
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return TopNavigationControls.GetUmbracoNaviHide(this); }
 		}
 	}
 
@@ -457,6 +475,52 @@ namespace Umbraco.Web.PublishedContentModels
 
 		/// <summary>Static getter for Content Grid</summary>
 		public static Newtonsoft.Json.Linq.JToken GetContentGrid(IBasicContentControls that) { return that.GetPropertyValue<Newtonsoft.Json.Linq.JToken>("contentGrid"); }
+	}
+
+	// Mixin content Type 1075 with alias "topNavigationControls"
+	/// <summary>Top Navigation Controls</summary>
+	public partial interface ITopNavigationControls : IPublishedContent
+	{
+		/// <summary>umbraco Navi Hide</summary>
+		bool UmbracoNaviHide { get; }
+	}
+
+	/// <summary>Top Navigation Controls</summary>
+	[PublishedContentModel("topNavigationControls")]
+	public partial class TopNavigationControls : PublishedContentModel, ITopNavigationControls
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "topNavigationControls";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TopNavigationControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TopNavigationControls, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// umbraco Navi Hide: Tick to exclude form navigation
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return GetUmbracoNaviHide(this); }
+		}
+
+		/// <summary>Static getter for umbraco Navi Hide</summary>
+		public static bool GetUmbracoNaviHide(ITopNavigationControls that) { return that.GetPropertyValue<bool>("umbracoNaviHide"); }
 	}
 
 	/// <summary>Folder</summary>
