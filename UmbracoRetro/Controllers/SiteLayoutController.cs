@@ -49,6 +49,7 @@ namespace UmbracoRetro.Controllers
         private List<NavigationListItem> GetChildNavigationList(dynamic page)
         {
             List<NavigationListItem> listItems = null;
+            // to hide form nav name the property umbracoHideNav
             var childPages = page.Children.Where("Visible");
             if (childPages != null && childPages.Any() && childPages.Count() > 0)
             {

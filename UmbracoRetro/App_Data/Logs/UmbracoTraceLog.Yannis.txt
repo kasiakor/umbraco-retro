@@ -531,3 +531,17 @@ _shutDownStack=   at System.Environment.GetStackTrace(Exception e, Boolean needF
  2020-03-27 18:54:10,492 [P5732/D7/T63] WARN  Umbraco.Web.UmbracoModule - Status code is 404 yet TrySkipIisCustomErrors is false - IIS will take over.
  2020-03-27 18:54:16,050 [P5732/D7/T12] WARN  Umbraco.Web.UmbracoModule - Status code is 404 yet TrySkipIisCustomErrors is false - IIS will take over.
  2020-03-27 18:54:20,003 [P5732/D7/T65] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2020-03-26 18:54:19
+ 2020-03-27 19:12:08,618 [P5732/D7/T28] INFO  Umbraco.Core.Logging.OwinLogger - Event Id: 0, state: User logged will be logged out due to timeout: admin, IP Address: ::1
+ 2020-03-27 21:12:09,697 [P5732/D7/T53] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username admin from IP address ::1
+ 2020-03-27 21:12:09,701 [P5732/D7/T53] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: admin logged in from IP address ::1
+ 2020-03-27 21:12:09,827 [P5732/D7/T29] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2020-03-27 21:12:09,827 [P5732/D7/T29] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 0ms)
+ 2020-03-27 21:12:46,368 [P5732/D7/T79] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'About' with Id '1062' has been published.
+ 2020-03-27 21:12:50,692 [P5732/D7/T44] INFO  umbraco.content - Save Xml to file...
+ 2020-03-27 21:12:50,722 [P5732/D7/T44] INFO  umbraco.content - Saved Xml to file.
+ 2020-03-27 21:13:28,579 [P5732/D7/T53] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'About' with Id '1062' has been published.
+ 2020-03-27 21:13:32,798 [P5732/D7/T39] INFO  umbraco.content - Save Xml to file...
+ 2020-03-27 21:13:32,813 [P5732/D7/T39] INFO  umbraco.content - Saved Xml to file.
+ 2020-03-27 21:13:40,102 [P5732/D7/T80] INFO  Umbraco.Core.Publishing.PublishingStrategy - Content 'About' with Id '1062' has been published.
+ 2020-03-27 21:13:44,354 [P5732/D7/T39] INFO  umbraco.content - Save Xml to file...
+ 2020-03-27 21:13:44,377 [P5732/D7/T39] INFO  umbraco.content - Saved Xml to file.
