@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "315455a473f469d3")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "30c4f7ab57b0f4ae")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -260,7 +260,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Content Grid: Enter the content
+		/// Content Grid: Enter content
 		///</summary>
 		[ImplementPropertyType("contentGrid")]
 		public Newtonsoft.Json.Linq.JToken ContentGrid
@@ -481,7 +481,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Content Grid: Enter the content
+		/// Content Grid: Enter content
 		///</summary>
 		[ImplementPropertyType("contentGrid")]
 		public Newtonsoft.Json.Linq.JToken ContentGrid
