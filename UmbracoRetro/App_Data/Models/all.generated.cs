@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "30c4f7ab57b0f4ae")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "35089eb57355f4e")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
 // FILE: models.generated.cs
@@ -42,7 +42,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IIntroControls, ITitleControls
+	public partial class Home : PublishedContentModel, IFeaturedItemsControl, IIntroControls, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -63,6 +63,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Home, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Featured Items: Enter the featured items to display
+		///</summary>
+		[ImplementPropertyType("featuredItems")]
+		public Archetype.Models.ArchetypeModel FeaturedItems
+		{
+			get { return FeaturedItemsControl.GetFeaturedItems(this); }
 		}
 
 		///<summary>
@@ -537,6 +546,52 @@ namespace Umbraco.Web.PublishedContentModels
 
 		/// <summary>Static getter for umbraco Navi Hide</summary>
 		public static bool GetUmbracoNaviHide(ITopNavigationControls that) { return that.GetPropertyValue<bool>("umbracoNaviHide"); }
+	}
+
+	// Mixin content Type 1079 with alias "featuredItemsControl"
+	/// <summary>Featured Items Controls</summary>
+	public partial interface IFeaturedItemsControl : IPublishedContent
+	{
+		/// <summary>Featured Items</summary>
+		Archetype.Models.ArchetypeModel FeaturedItems { get; }
+	}
+
+	/// <summary>Featured Items Controls</summary>
+	[PublishedContentModel("featuredItemsControl")]
+	public partial class FeaturedItemsControl : PublishedContentModel, IFeaturedItemsControl
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "featuredItemsControl";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public FeaturedItemsControl(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<FeaturedItemsControl, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Featured Items: Enter the featured items to display
+		///</summary>
+		[ImplementPropertyType("featuredItems")]
+		public Archetype.Models.ArchetypeModel FeaturedItems
+		{
+			get { return GetFeaturedItems(this); }
+		}
+
+		/// <summary>Static getter for Featured Items</summary>
+		public static Archetype.Models.ArchetypeModel GetFeaturedItems(IFeaturedItemsControl that) { return that.GetPropertyValue<Archetype.Models.ArchetypeModel>("featuredItems"); }
 	}
 
 	/// <summary>Folder</summary>

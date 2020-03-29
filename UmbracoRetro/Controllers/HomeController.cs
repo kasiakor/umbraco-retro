@@ -1,5 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using Umbraco.Core.Models;
 using Umbraco.Web.Mvc;
+using UmbracoRetro.Models;
+using Archetype.Models;
+using Umbraco.Web;
 
 namespace UmbracoRetro.Controllers
 {
@@ -7,6 +12,14 @@ namespace UmbracoRetro.Controllers
     {
          public ActionResult RenderFeatured()
         {
+            List<FeaturedItem> model = new List<FeaturedItem>();
+            //IPublishedContent homePage = CurrentPage.AncestorOrSelf(1).DescendantOrSelf().Where(x => x.DocumentTypeAlias == "home").FirstOrDefault();
+            const int HOME_PAGE_POSITION_IN_PATH = 1;
+            int homePageId = int.Parse(CurrentPage.Path.Split(',')[HOME_PAGE_POSITION_IN_PATH]);
+            IPublishedContent homePage = Umbraco.Content(homePageId);
+            // get the value of hp - featured 
+            ArchetypeModel featuredItems = homePage.GetPropertyValue<ArchetypeModel>("featuredItems");
+
             return PartialView("~/Views/Partials/Home/_Featured.cshtml");
         }
 
