@@ -337,6 +337,20 @@
     <Content Include="App_Plugins\Archetype\views\archetype.config.stylescript.dialog.html" />
     <Content Include="App_Plugins\Archetype\views\archetype.default.html" />
     <Content Include="App_Plugins\Archetype\views\archetype.html" />
+    <Content Include="images\image_1.jpg" />
+    <Content Include="images\image_10.jpg" />
+    <Content Include="images\image_2.jpg" />
+    <Content Include="images\image_3.jpg" />
+    <Content Include="images\image_4.jpg" />
+    <Content Include="images\image_5.jpg" />
+    <Content Include="images\image_6.jpg" />
+    <Content Include="images\image_7.jpg" />
+    <Content Include="images\image_8.jpg" />
+    <Content Include="images\image_9.jpg" />
+    <Content Include="images\image_about.jpg" />
+    <Content Include="images\index.html" />
+    <Content Include="images\loader.gif" />
+    <Content Include="images\loc.png" />
     <Content Include="packages.config" />
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
     <Content Include="Views\Web.config" />
@@ -399,6 +413,7 @@
     <Content Include="Views\Contact.cshtml" />
     <Content Include="Views\Services.cshtml" />
     <Content Include="Views\Partials\SiteLayout\_TitleControls.cshtml" />
+    <Content Include="images\.DS_Store" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

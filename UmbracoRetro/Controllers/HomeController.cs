@@ -13,14 +13,36 @@ namespace UmbracoRetro.Controllers
          public ActionResult RenderFeatured()
         {
             List<FeaturedItem> model = new List<FeaturedItem>();
-            //IPublishedContent homePage = CurrentPage.AncestorOrSelf(1).DescendantOrSelf().Where(x => x.DocumentTypeAlias == "home").FirstOrDefault();
+            //IPublishedContent homePage = Umbraco.AssignedContentItem.AncestorOrSelf(1);
             const int HOME_PAGE_POSITION_IN_PATH = 1;
             int homePageId = int.Parse(CurrentPage.Path.Split(',')[HOME_PAGE_POSITION_IN_PATH]);
             IPublishedContent homePage = Umbraco.Content(homePageId);
             // get the value of hp - featured 
             ArchetypeModel featuredItems = homePage.GetPropertyValue<ArchetypeModel>("featuredItems");
 
-            return PartialView("~/Views/Partials/Home/_Featured.cshtml");
+            foreach(ArchetypeFieldsetModel fieldset in featuredItems)
+            {
+                var imageId = fieldset.GetValue<string>("image");
+                var mediaItem = Umbraco.Media(imageId);
+                string imageUrl = mediaItem.Url;
+
+                var pageId = fieldset.GetValue<string>("page");
+                IPublishedContent linkedToPage = Umbraco.TypedContent(pageId);
+                string linkUrl = "";
+
+                if (linkedToPage != null)
+                {
+                    linkUrl = linkedToPage.Url;
+                }
+                
+
+                model.Add(new FeaturedItem(fieldset.GetValue<string>("name"), fieldset.GetValue<string>("category"), imageUrl, linkUrl));
+
+            }
+                
+
+            // pass this model to the partial view
+            return PartialView("~/Views/Partials/Home/_Featured.cshtml", model);
         }
 
         public ActionResult RenderServices()
