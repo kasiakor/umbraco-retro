@@ -5,7 +5,8 @@ using Umbraco.Core.Models;
 using Umbraco.Web.Mvc;
 using UmbracoRetro.Models;
 using System.Runtime.Caching;
-
+using System.Linq;
+using Umbraco.Web;
 
 namespace UmbracoRetro.Controllers
 {
@@ -19,7 +20,7 @@ namespace UmbracoRetro.Controllers
         {
             //List<NavigationListItem> nav = GetNavigationModelFromDatabase();
             //use cache if empty usedb
-            List<NavigationListItem> nav = GetObjectFromCache<List<NavigationListItem>>("mainNav", 5, GetNavigationModelFromDatabase);
+            List<NavigationListItem> nav = GetObjectFromCache<List<NavigationListItem>>("mainNav", 0, GetNavigationModelFromDatabase);
             return PartialView("~/Views/Partials/SiteLayout/_Header.cshtml", nav);
         }
 
@@ -46,11 +47,11 @@ namespace UmbracoRetro.Controllers
         /// </summary>
         /// <param name="page">The parent page which you want the child structure for</param>
         /// <returns>A List of NavigationListItems, representing the structure of the pages below a page.</returns>
-        private List<NavigationListItem> GetChildNavigationList(dynamic page)
+        private List<NavigationListItem> GetChildNavigationList(IPublishedContent page)
         {
             List<NavigationListItem> listItems = null;
-            // to hide form nav name the property umbracoHideNav
-            var childPages = page.Children.Where("Visible");
+            // to hide from nav name with the property umbracoHideNav
+            var childPages = page.Children.Where("Visible").Where(x => x.Level <=2);
             if (childPages != null && childPages.Any() && childPages.Count() > 0)
             {
                 listItems = new List<NavigationListItem>();
