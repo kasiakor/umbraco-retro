@@ -16,7 +16,8 @@ namespace UmbracoRetro.Controllers
             List<BlogPreview> model = new List<BlogPreview>();
             //code to get the current page using helper
             //UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
-            IPublishedContent blogPage = CurrentPage.AncestorOrSelf("blog");
+            //IPublishedContent blogPage = CurrentPage.AncestorOrSelf("blog");
+            IPublishedContent blogPage = Umbraco.AssignedContentItem.AncestorOrSelf("blog");
 
             if (blogPage != null)
             {

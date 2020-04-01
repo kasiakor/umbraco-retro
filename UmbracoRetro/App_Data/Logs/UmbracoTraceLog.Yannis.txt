@@ -2831,3 +2831,37 @@ _shutDownStack=   at System.Environment.GetStackTrace(Exception e, Boolean needF
    at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem()
    at System.Threading.ThreadPoolWorkQueue.Dispatch()
    at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback()
+ 2020-04-01 21:27:43,577 [P1284/D21/T23] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.5.4 application starting on YANNIS
+ 2020-04-01 21:27:43,703 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2020-04-01 21:27:43,858 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Hash determined (took 154ms)
+ 2020-04-01 21:27:43,981 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+ 2020-04-01 21:27:44,622 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 0 (took 641ms)
+ 2020-04-01 21:27:44,652 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2020-04-01 21:27:44,660 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 8ms)
+ 2020-04-01 21:27:44,661 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2020-04-01 21:27:44,670 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 0 (took 8ms)
+ 2020-04-01 21:27:44,690 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+ 2020-04-01 21:27:44,701 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 10ms)
+ 2020-04-01 21:27:44,702 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+ 2020-04-01 21:27:44,712 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 0 (took 10ms)
+ 2020-04-01 21:27:45,157 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+ 2020-04-01 21:27:45,165 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 0 (took 8ms)
+ 2020-04-01 21:27:45,167 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+ 2020-04-01 21:27:45,175 [P1284/D21/T23] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 0 (took 8ms)
+ 2020-04-01 21:27:47,236 [P1284/D21/T23] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2020-04-01 21:27:48,580 [P1284/D21/T23] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2020-04-01 21:27:48,589 [P1284/D21/T23] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2020-04-01 21:27:48,937 [P1284/D21/T23] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2020-04-01 21:27:49,353 [P1284/D21/T23] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2020-04-01 21:27:49,353 [P1284/D21/T23] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2020-04-01 21:27:49,374 [P1284/D21/T23] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 5938ms)
+ 2020-04-01 21:27:49,697 [P1284/D21/T12] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://localhost:50204/umbraco (UmbracoModule request)
+ 2020-04-01 21:27:50,138 [P1284/D21/T12] INFO  umbraco.content - Load Xml from file...
+ 2020-04-01 21:27:50,218 [P1284/D21/T12] INFO  umbraco.content - Loaded Xml from file.
+ 2020-04-01 21:27:52,395 [P1284/D21/T12] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2020-04-01 21:27:52,438 [P1284/D21/T12] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 42ms)
+ 2020-04-01 21:27:52,695 [P1284/D21/T12] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2020-04-01 21:27:52,708 [P1284/D21/T12] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 13ms)
+ 2020-04-01 21:27:57,193 [P1284/D21/T12] WARN  Umbraco.Web.Mvc.RenderRouteHandler - The current Document Type blog matches a locally declared controller of type UmbracoRetro.Controllers.BlogController. Custom Controllers for Umbraco routing must implement 'Umbraco.Web.Mvc.IRenderController' and inherit from 'System.Web.Mvc.ControllerBase'.
+ 2020-04-01 21:28:14,713 [P1284/D21/T9] WARN  Umbraco.Web.UmbracoModule - Status code is 404 yet TrySkipIisCustomErrors is false - IIS will take over.
+ 2020-04-01 21:28:50,446 [P1284/D21/T91] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2020-03-31 21:28:50
