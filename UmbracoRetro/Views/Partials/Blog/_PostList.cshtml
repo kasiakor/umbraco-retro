@@ -5,11 +5,20 @@
 <div class="row">
     @foreach (BlogPreview article in Model)
     {
-        @RenderBlogPreview(article)
+        <div class="col-md-4 text-center">
+            <div class="blog-inner">
+                <a href="@article.LinkUrl"><img class="img-responsive" src="@article.ImageUrl" alt="@article.Name"></a>
+                <div class="desc">
+                    <h3><a href="@article.LinkUrl">@article.Name</a></h3>
+                    <p>@article.Introduction</p>
+                    <p><a href="@article.LinkUrl" class="btn btn-primary btn-outline with-arrow">Read More<i class="icon-arrow-right"></i></a></p>
+                </div>
+            </div>
+        </div>
     }
 </div>
 
-@helper RenderBlogPreview(BlogPreview item)
+@*@helper RenderBlogPreview(BlogPreview item)
 {
 <div class="col-md-4 text-center">
     <div class="blog-inner">
@@ -21,4 +30,4 @@
         </div>
     </div>
 </div>
-}
+}*@
