@@ -63,7 +63,12 @@ namespace UmbracoRetro.Controllers
 
         public ActionResult RenderClients()
         {
-            return PartialView("~/Views/Partials/Home/_Clients.cshtml");
+            IPublishedContent homePage = CurrentPage.AncestorOrSelf("home");
+            string title = homePage.GetPropertyValue<string>("testimonialsTitle");
+            string introduction = homePage.GetPropertyValue("testimonialsIntroduction").ToString();
+
+            Testimonials model = new Testimonials(title, introduction);
+            return PartialView("~/Views/Partials/Home/_Clients.cshtml", model);
         }
     }
 }
