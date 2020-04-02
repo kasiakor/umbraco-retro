@@ -19,14 +19,14 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "137027ceb1812be3")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "e7c34e669605e576")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IFeaturedItemsControl, IIntroControls, ITitleControls
+	public partial class Home : PublishedContentModel, IFeaturedItemsControl, IIntroControls, ILastBlogPostsControls, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -65,6 +65,24 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Intro
 		{
 			get { return IntroControls.GetIntro(this); }
+		}
+
+		///<summary>
+		/// Last Blog Posts Introduction: Enter the introduction to the latest blog posts section
+		///</summary>
+		[ImplementPropertyType("lastBlogPostsIntroduction")]
+		public IHtmlString LastBlogPostsIntroduction
+		{
+			get { return LastBlogPostsControls.GetLastBlogPostsIntroduction(this); }
+		}
+
+		///<summary>
+		/// Last Blog Posts Title: Enter the title of the latest blog posts section
+		///</summary>
+		[ImplementPropertyType("lastBlogPostsTitle")]
+		public string LastBlogPostsTitle
+		{
+			get { return LastBlogPostsControls.GetLastBlogPostsTitle(this); }
 		}
 
 		///<summary>
@@ -708,6 +726,67 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			get { return TitleControls.GetTitle(this); }
 		}
+	}
+
+	// Mixin content Type 1108 with alias "lastBlogPostsControls"
+	/// <summary>Last Blog Posts Controls</summary>
+	public partial interface ILastBlogPostsControls : IPublishedContent
+	{
+		/// <summary>Last Blog Posts Introduction</summary>
+		IHtmlString LastBlogPostsIntroduction { get; }
+
+		/// <summary>Last Blog Posts Title</summary>
+		string LastBlogPostsTitle { get; }
+	}
+
+	/// <summary>Last Blog Posts Controls</summary>
+	[PublishedContentModel("lastBlogPostsControls")]
+	public partial class LastBlogPostsControls : PublishedContentModel, ILastBlogPostsControls
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "lastBlogPostsControls";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public LastBlogPostsControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<LastBlogPostsControls, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Last Blog Posts Introduction: Enter the introduction to the latest blog posts section
+		///</summary>
+		[ImplementPropertyType("lastBlogPostsIntroduction")]
+		public IHtmlString LastBlogPostsIntroduction
+		{
+			get { return GetLastBlogPostsIntroduction(this); }
+		}
+
+		/// <summary>Static getter for Last Blog Posts Introduction</summary>
+		public static IHtmlString GetLastBlogPostsIntroduction(ILastBlogPostsControls that) { return that.GetPropertyValue<IHtmlString>("lastBlogPostsIntroduction"); }
+
+		///<summary>
+		/// Last Blog Posts Title: Enter the title of the latest blog posts section
+		///</summary>
+		[ImplementPropertyType("lastBlogPostsTitle")]
+		public string LastBlogPostsTitle
+		{
+			get { return GetLastBlogPostsTitle(this); }
+		}
+
+		/// <summary>Static getter for Last Blog Posts Title</summary>
+		public static string GetLastBlogPostsTitle(ILastBlogPostsControls that) { return that.GetPropertyValue<string>("lastBlogPostsTitle"); }
 	}
 
 	/// <summary>Folder</summary>

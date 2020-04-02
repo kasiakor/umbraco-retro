@@ -52,7 +52,13 @@ namespace UmbracoRetro.Controllers
 
         public ActionResult RenderBlog()
         {
-            return PartialView("~/Views/Partials/Home/_Blog.cshtml");
+            
+            IPublishedContent homePage = CurrentPage.AncestorOrSelf("home");
+            string title = homePage.GetPropertyValue<string>("lastBlogPostsTitle");
+            string introduction = homePage.GetPropertyValue("lastBlogPostsIntroduction").ToString();
+
+            LastBlogPosts model = new LastBlogPosts(title, introduction);
+            return PartialView("~/Views/Partials/Home/_Blog.cshtml", model);
         }
 
         public ActionResult RenderClients()
