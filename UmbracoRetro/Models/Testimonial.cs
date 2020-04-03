@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace UmbracoRetro.Models
+﻿namespace UmbracoRetro.Models
 {
     public class Testimonial
     {
@@ -12,8 +7,8 @@ namespace UmbracoRetro.Models
 
         public Testimonial(string quote, string name)
         {
-            Quote = Quote;
-            Name = Name;
+            Quote = quote;
+            Name = name;
         }
     }
 }

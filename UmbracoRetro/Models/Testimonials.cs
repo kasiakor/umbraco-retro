@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace UmbracoRetro.Models
 {
@@ -30,10 +27,11 @@ namespace UmbracoRetro.Models
         } 
 
 
-        public Testimonials(string title, string introducion)
+        public Testimonials(string title, string introducion, List<Testimonial> testimonialslist)
         {
             Title = title;
             Introduction = introducion;
+            Testimonialslist = testimonialslist;
         }
     }
 }

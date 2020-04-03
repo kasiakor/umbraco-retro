@@ -67,7 +67,22 @@ namespace UmbracoRetro.Controllers
             string title = homePage.GetPropertyValue<string>("testimonialsTitle");
             string introduction = homePage.GetPropertyValue("testimonialsIntroduction").ToString();
 
-            Testimonials model = new Testimonials(title, introduction);
+            List<Testimonial> testimonials = new List<Testimonial>();
+
+            // get the testimonialList from Umbraco, type archetype 
+            ArchetypeModel testimonialList = homePage.GetPropertyValue<ArchetypeModel>("testimonialList");
+
+            if(testimonialList != null)
+            {
+                foreach(ArchetypeFieldsetModel testimonial in testimonialList)
+                {
+                    string name = testimonial.GetValue<string>("name");
+                    string quote = testimonial.GetValue<string>("quote");
+                    testimonials.Add(new Testimonial(quote, name));
+                }
+            }
+
+            Testimonials model = new Testimonials(title, introduction, testimonials);
             return PartialView("~/Views/Partials/Home/_Testimonials.cshtml", model);
         }
     }

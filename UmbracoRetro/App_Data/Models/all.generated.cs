@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "63b0bbc6a4538616")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "5adda96e48b0070c")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -99,6 +99,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string LastBlogPostsTitle
 		{
 			get { return LastBlogPostsControls.GetLastBlogPostsTitle(this); }
+		}
+
+		///<summary>
+		/// Testimonial List: Enter the testimonials to display
+		///</summary>
+		[ImplementPropertyType("testimonialList")]
+		public Archetype.Models.ArchetypeModel TestimonialList
+		{
+			get { return TestimonialsControls.GetTestimonialList(this); }
 		}
 
 		///<summary>
@@ -827,6 +836,9 @@ namespace Umbraco.Web.PublishedContentModels
 	/// <summary>Testimonials Controls</summary>
 	public partial interface ITestimonialsControls : IPublishedContent
 	{
+		/// <summary>Testimonial List</summary>
+		Archetype.Models.ArchetypeModel TestimonialList { get; }
+
 		/// <summary>Testimonials Introduction</summary>
 		IHtmlString TestimonialsIntroduction { get; }
 
@@ -858,6 +870,18 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Testimonial List: Enter the testimonials to display
+		///</summary>
+		[ImplementPropertyType("testimonialList")]
+		public Archetype.Models.ArchetypeModel TestimonialList
+		{
+			get { return GetTestimonialList(this); }
+		}
+
+		/// <summary>Static getter for Testimonial List</summary>
+		public static Archetype.Models.ArchetypeModel GetTestimonialList(ITestimonialsControls that) { return that.GetPropertyValue<Archetype.Models.ArchetypeModel>("testimonialList"); }
 
 		///<summary>
 		/// Testimonials Introduction: Enter the introduction for testimonials section
