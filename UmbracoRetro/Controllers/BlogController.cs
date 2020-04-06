@@ -13,7 +13,8 @@ namespace UmbracoRetro.Controllers
         public ActionResult RenderPostList(int numberOfItems)
         {
             List<BlogPreview> model = new List<BlogPreview>();
-            IPublishedContent blogPage = CurrentPage.AncestorOrSelf(1).DescendantsOrSelf().Where(x => x.DocumentTypeAlias == "blog").FirstOrDefault();
+            IPublishedContent homePage = CurrentPage.AncestorOrSelf("home");
+            IPublishedContent blogPage = homePage.Children.Where(x => x.DocumentTypeAlias == "blog").FirstOrDefault();
            
             //code to get the current page using helper
             //UmbracoHelper umbracoHelper = new UmbracoHelper(UmbracoContext.Current);
