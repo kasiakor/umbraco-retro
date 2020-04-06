@@ -49,7 +49,14 @@ namespace UmbracoRetro.Controllers
 
         public ActionResult RenderServices()
         {
-            return PartialView("~/Views/Partials/Home/_Services.cshtml");
+            IPublishedContent homePage = CurrentPage.AncestorOrSelf("home");
+            string title = homePage.GetPropertyValue<string>("servicesTitle");
+            string subtitle = homePage.GetPropertyValue("servicesSubtitle").ToString();
+            string category = homePage.GetPropertyValue<string>("categoryName");
+            string description = homePage.GetPropertyValue("categoryDescription").ToString();
+
+            Service model = new Service(title, subtitle, category, description);
+            return PartialView("~/Views/Partials/Home/_Services.cshtml", model);
         }
 
         public ActionResult RenderBlog()

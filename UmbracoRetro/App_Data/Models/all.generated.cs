@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "5adda96e48b0070c")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "f3f116fb9a4f8436")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 
 // FILE: models.generated.cs
@@ -42,7 +42,7 @@ namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IFeaturedItemsControl, IIntroControls, ILastBlogPostsControls, ITestimonialsControls, ITitleControls
+	public partial class Home : PublishedContentModel, IFeaturedItemsControl, IIntroControls, ILastBlogPostsControls, IServicesControls, ITestimonialsControls, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -99,6 +99,42 @@ namespace Umbraco.Web.PublishedContentModels
 		public string LastBlogPostsTitle
 		{
 			get { return LastBlogPostsControls.GetLastBlogPostsTitle(this); }
+		}
+
+		///<summary>
+		/// Category Description: Enter category description for the service
+		///</summary>
+		[ImplementPropertyType("categoryDescription")]
+		public string CategoryDescription
+		{
+			get { return ServicesControls.GetCategoryDescription(this); }
+		}
+
+		///<summary>
+		/// Category Name: Enter name for the service category
+		///</summary>
+		[ImplementPropertyType("categoryName")]
+		public string CategoryName
+		{
+			get { return ServicesControls.GetCategoryName(this); }
+		}
+
+		///<summary>
+		/// Services Subtitle: Enter subtitles for services area
+		///</summary>
+		[ImplementPropertyType("servicesSubtitle")]
+		public string ServicesSubtitle
+		{
+			get { return ServicesControls.GetServicesSubtitle(this); }
+		}
+
+		///<summary>
+		/// Services Title: Enter title for services area
+		///</summary>
+		[ImplementPropertyType("servicesTitle")]
+		public string ServicesTitle
+		{
+			get { return ServicesControls.GetServicesTitle(this); }
 		}
 
 		///<summary>
@@ -246,7 +282,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Services</summary>
 	[PublishedContentModel("services")]
-	public partial class Services : PublishedContentModel, ITitleControls
+	public partial class Services : PublishedContentModel, IServicesControls, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "services";
@@ -267,6 +303,42 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Services, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Category Description: Enter category description for the service
+		///</summary>
+		[ImplementPropertyType("categoryDescription")]
+		public string CategoryDescription
+		{
+			get { return ServicesControls.GetCategoryDescription(this); }
+		}
+
+		///<summary>
+		/// Category Name: Enter name for the service category
+		///</summary>
+		[ImplementPropertyType("categoryName")]
+		public string CategoryName
+		{
+			get { return ServicesControls.GetCategoryName(this); }
+		}
+
+		///<summary>
+		/// Services Subtitle: Enter subtitles for services area
+		///</summary>
+		[ImplementPropertyType("servicesSubtitle")]
+		public string ServicesSubtitle
+		{
+			get { return ServicesControls.GetServicesSubtitle(this); }
+		}
+
+		///<summary>
+		/// Services Title: Enter title for services area
+		///</summary>
+		[ImplementPropertyType("servicesTitle")]
+		public string ServicesTitle
+		{
+			get { return ServicesControls.GetServicesTitle(this); }
 		}
 
 		///<summary>
@@ -906,6 +978,97 @@ namespace Umbraco.Web.PublishedContentModels
 
 		/// <summary>Static getter for Testimonials Title</summary>
 		public static string GetTestimonialsTitle(ITestimonialsControls that) { return that.GetPropertyValue<string>("testimonialsTitle"); }
+	}
+
+	// Mixin content Type 1112 with alias "servicesControls"
+	/// <summary>Services Controls</summary>
+	public partial interface IServicesControls : IPublishedContent
+	{
+		/// <summary>Category Description</summary>
+		string CategoryDescription { get; }
+
+		/// <summary>Category Name</summary>
+		string CategoryName { get; }
+
+		/// <summary>Services Subtitle</summary>
+		string ServicesSubtitle { get; }
+
+		/// <summary>Services Title</summary>
+		string ServicesTitle { get; }
+	}
+
+	/// <summary>Services Controls</summary>
+	[PublishedContentModel("servicesControls")]
+	public partial class ServicesControls : PublishedContentModel, IServicesControls
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "servicesControls";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ServicesControls(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ServicesControls, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Category Description: Enter category description for the service
+		///</summary>
+		[ImplementPropertyType("categoryDescription")]
+		public string CategoryDescription
+		{
+			get { return GetCategoryDescription(this); }
+		}
+
+		/// <summary>Static getter for Category Description</summary>
+		public static string GetCategoryDescription(IServicesControls that) { return that.GetPropertyValue<string>("categoryDescription"); }
+
+		///<summary>
+		/// Category Name: Enter name for the service category
+		///</summary>
+		[ImplementPropertyType("categoryName")]
+		public string CategoryName
+		{
+			get { return GetCategoryName(this); }
+		}
+
+		/// <summary>Static getter for Category Name</summary>
+		public static string GetCategoryName(IServicesControls that) { return that.GetPropertyValue<string>("categoryName"); }
+
+		///<summary>
+		/// Services Subtitle: Enter subtitles for services area
+		///</summary>
+		[ImplementPropertyType("servicesSubtitle")]
+		public string ServicesSubtitle
+		{
+			get { return GetServicesSubtitle(this); }
+		}
+
+		/// <summary>Static getter for Services Subtitle</summary>
+		public static string GetServicesSubtitle(IServicesControls that) { return that.GetPropertyValue<string>("servicesSubtitle"); }
+
+		///<summary>
+		/// Services Title: Enter title for services area
+		///</summary>
+		[ImplementPropertyType("servicesTitle")]
+		public string ServicesTitle
+		{
+			get { return GetServicesTitle(this); }
+		}
+
+		/// <summary>Static getter for Services Title</summary>
+		public static string GetServicesTitle(IServicesControls that) { return that.GetPropertyValue<string>("servicesTitle"); }
 	}
 
 	/// <summary>Folder</summary>
