@@ -102,5 +102,28 @@ namespace UmbracoRetro.Controllers
         {
             return PartialView("~/Views/Partials/SiteLayout/_Footer.cshtml");
         }
+
+        public ActionResult RenderMetaData()
+        {
+            SEO model = new SEO();
+            //populate title or page name
+            string title = CurrentPage.GetPropertyValue<string>("title");
+            model.Title = !string.IsNullOrEmpty(title) ? title : CurrentPage.Name;
+            model.Description = CurrentPage.HasProperty("description") ? CurrentPage.GetPropertyValue<string>("description") : null;
+            //for keyword we can use string, comma separated values
+            model.Keywords = CurrentPage.HasProperty("keywords") ? CurrentPage.GetPropertyValue<string>("keywords") : null;
+
+            if(CurrentPage.HasProperty("socialShareImage"))
+            {
+                int mediaId = CurrentPage.GetPropertyValue<int>("socialShareImage");
+                var mediaItem = Umbraco.Media(mediaId);
+                model.ImageUrl = mediaItem.Url;
+            }
+
+            model.Url = CurrentPage.UrlWithDomain();
+
+
+            return PartialView("~/Views/Partials/SiteLayout/_MetaData.cshtml", model);
+        }
     }
 }

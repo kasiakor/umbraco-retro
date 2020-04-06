@@ -1,0 +1,18 @@
+﻿@model SEO
+@using UmbracoRetro.Models
+
+<title>@Model.Title</title>
+<meta name="description" content="@Model.Description" />
+<meta name="keywords" content="@Model.Keywords" />
+<meta name="author" content="kasiakor" />
+
+<!-- Facebook and Twitter integration -->
+<meta property="og:title" content="@Model.Title" />
+<meta property="og:image" content="@Model.ImageUrl" />
+<meta property="og:url" content="@Model.Url" />
+<meta property="og:site_name" content="Retro" />
+<meta property="og:description" content="@Model.Description" />
+<meta name="twitter:title" content="@Model.Title" />
+<meta name="twitter:image" content="@Model.ImageUrl" />
+<meta name="twitter:url" content="@Model.Url" />
+<meta name="twitter:card" content="" />

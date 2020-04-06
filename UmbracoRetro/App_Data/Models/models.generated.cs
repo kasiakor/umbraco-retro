@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "f3f116fb9a4f8436")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "c77b5e02688d49b6")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -758,7 +758,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>Blog Post</summary>
 	[PublishedContentModel("blogPost")]
-	public partial class BlogPost : PublishedContentModel, IArticleControls, IBasicContentControls, ITitleControls
+	public partial class BlogPost : PublishedContentModel, IArticleControls, IBasicContentControls, IMetaData, ITitleControls
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "blogPost";
@@ -806,6 +806,33 @@ namespace Umbraco.Web.PublishedContentModels
 		public Newtonsoft.Json.Linq.JToken ContentGrid
 		{
 			get { return BasicContentControls.GetContentGrid(this); }
+		}
+
+		///<summary>
+		/// Description: This is description you will see in google or other places where it is shared. This is used for searching and introducing your article
+		///</summary>
+		[ImplementPropertyType("description")]
+		public string Description
+		{
+			get { return MetaData.GetDescription(this); }
+		}
+
+		///<summary>
+		/// Keywords: Enter the keywords for searching
+		///</summary>
+		[ImplementPropertyType("keywords")]
+		public object Keywords
+		{
+			get { return MetaData.GetKeywords(this); }
+		}
+
+		///<summary>
+		/// Social Share Image: Show image to display when this page is shared
+		///</summary>
+		[ImplementPropertyType("socialShareImage")]
+		public string SocialShareImage
+		{
+			get { return MetaData.GetSocialShareImage(this); }
 		}
 
 		///<summary>
@@ -1053,6 +1080,82 @@ namespace Umbraco.Web.PublishedContentModels
 
 		/// <summary>Static getter for Services Title</summary>
 		public static string GetServicesTitle(IServicesControls that) { return that.GetPropertyValue<string>("servicesTitle"); }
+	}
+
+	// Mixin content Type 1113 with alias "metaData"
+	/// <summary>Meta Data</summary>
+	public partial interface IMetaData : IPublishedContent
+	{
+		/// <summary>Description</summary>
+		string Description { get; }
+
+		/// <summary>Keywords</summary>
+		object Keywords { get; }
+
+		/// <summary>Social Share Image</summary>
+		string SocialShareImage { get; }
+	}
+
+	/// <summary>Meta Data</summary>
+	[PublishedContentModel("metaData")]
+	public partial class MetaData : PublishedContentModel, IMetaData
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "metaData";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public MetaData(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<MetaData, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Description: This is description you will see in google or other places where it is shared. This is used for searching and introducing your article
+		///</summary>
+		[ImplementPropertyType("description")]
+		public string Description
+		{
+			get { return GetDescription(this); }
+		}
+
+		/// <summary>Static getter for Description</summary>
+		public static string GetDescription(IMetaData that) { return that.GetPropertyValue<string>("description"); }
+
+		///<summary>
+		/// Keywords: Enter the keywords for searching
+		///</summary>
+		[ImplementPropertyType("keywords")]
+		public object Keywords
+		{
+			get { return GetKeywords(this); }
+		}
+
+		/// <summary>Static getter for Keywords</summary>
+		public static object GetKeywords(IMetaData that) { return that.GetPropertyValue("keywords"); }
+
+		///<summary>
+		/// Social Share Image: Show image to display when this page is shared
+		///</summary>
+		[ImplementPropertyType("socialShareImage")]
+		public string SocialShareImage
+		{
+			get { return GetSocialShareImage(this); }
+		}
+
+		/// <summary>Static getter for Social Share Image</summary>
+		public static string GetSocialShareImage(IMetaData that) { return that.GetPropertyValue<string>("socialShareImage"); }
 	}
 
 	/// <summary>Folder</summary>

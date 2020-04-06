@@ -431,6 +431,7 @@
     <Content Include="images\.DS_Store" />
     <Content Include="Views\BlogPost.cshtml" />
     <Content Include="Views\Partials\Blog\_PostList.cshtml" />
+    <Content Include="Views\Partials\SiteLayout\_MetaData.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -497,6 +498,7 @@
     <Compile Include="Models\BlogPreview.cs" />
     <Compile Include="Models\FeaturedItem.cs" />
     <Compile Include="Models\LastBlogPosts.cs" />
+    <Compile Include="Models\SEO.cs" />
     <Compile Include="Models\NavigationLink.cs" />
     <Compile Include="Models\NavigationListItem.cs" />
     <Compile Include="Models\Service.cs" />
