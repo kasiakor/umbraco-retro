@@ -5,12 +5,14 @@ using Umbraco.Web.Mvc;
 using UmbracoRetro.Models;
 using Archetype.Models;
 using Umbraco.Web;
+using System.Linq;
 
 namespace UmbracoRetro.Controllers
 {
     public class HomeController : SurfaceController
     {
-         public ActionResult RenderFeatured()
+        private const int MAXIMUM_TESTIMONIALS = 2;
+        public ActionResult RenderFeatured()
         {
             List<FeaturedItem> model = new List<FeaturedItem>();
             //IPublishedContent homePage = Umbraco.AssignedContentItem.AncestorOrSelf(1);
@@ -74,7 +76,7 @@ namespace UmbracoRetro.Controllers
 
             if(testimonialList != null)
             {
-                foreach(ArchetypeFieldsetModel testimonial in testimonialList)
+                foreach(ArchetypeFieldsetModel testimonial in testimonialList.Take(MAXIMUM_TESTIMONIALS))
                 {
                     string name = testimonial.GetValue<string>("name");
                     string quote = testimonial.GetValue<string>("quote");
