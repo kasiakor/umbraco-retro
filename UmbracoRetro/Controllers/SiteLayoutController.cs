@@ -106,6 +106,11 @@ namespace UmbracoRetro.Controllers
         public ActionResult RenderMetaData()
         {
             SEO model = new SEO();
+
+            IPublishedContent homePage = CurrentPage.AncestorOrSelf("home");
+            string domainAddress = homePage.UrlWithDomain();
+
+
             //populate title or page name
             string title = CurrentPage.GetPropertyValue<string>("title");
             model.Title = !string.IsNullOrEmpty(title) ? title : CurrentPage.Name;
@@ -117,7 +122,7 @@ namespace UmbracoRetro.Controllers
             {
                 int mediaId = CurrentPage.GetPropertyValue<int>("socialShareImage");
                 var mediaItem = Umbraco.Media(mediaId);
-                model.ImageUrl = mediaItem.Url;
+                model.ImageUrl = domainAddress.TrimEnd('/') + mediaItem.Url;
             }
 
             model.Url = CurrentPage.UrlWithDomain();
