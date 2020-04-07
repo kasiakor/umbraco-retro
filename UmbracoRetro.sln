@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoRetro", "UmbracoRetro\UmbracoRetro.csproj", "{28973053-40DC-4301-9EFE-FA61920E416C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoRetro.Library", "UmbracoRetro.Library\UmbracoRetro.Library.csproj", "{63D359FB-99C1-41A7-B7A1-160C53DA8518}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{28973053-40DC-4301-9EFE-FA61920E416C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28973053-40DC-4301-9EFE-FA61920E416C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28973053-40DC-4301-9EFE-FA61920E416C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63D359FB-99C1-41A7-B7A1-160C53DA8518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63D359FB-99C1-41A7-B7A1-160C53DA8518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63D359FB-99C1-41A7-B7A1-160C53DA8518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63D359FB-99C1-41A7-B7A1-160C53DA8518}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
