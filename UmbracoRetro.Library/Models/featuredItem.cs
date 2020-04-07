@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading.Tasks;
 
-namespace UmbracoRetro.Models
+namespace UmbracoRetro.Library.Models
+
 {
     public class FeaturedItem
     {
@@ -19,5 +21,6 @@ namespace UmbracoRetro.Models
             ImageUrl = imageUrl;
             LinkUrl = linkUrl;
         }
-    }   
+    }
 }
+

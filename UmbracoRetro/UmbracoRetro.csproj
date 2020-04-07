@@ -530,7 +530,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SiteLayoutController.cs" />
     <Compile Include="Models\BlogPreview.cs" />
-    <Compile Include="Models\FeaturedItem.cs" />
     <Compile Include="Models\LastBlogPosts.cs" />
     <Compile Include="Models\SEO.cs" />
     <Compile Include="Models\NavigationLink.cs" />
@@ -544,7 +543,12 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\UmbracoRetro.Library\UmbracoRetro.Library.csproj">
+      <Project>{63D359FB-99C1-41A7-B7A1-160C53DA8518}</Project>
+      <Name>UmbracoRetro.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
