@@ -7,6 +7,7 @@ using Archetype.Models;
 using Umbraco.Web;
 using System.Linq;
 using UmbracoRetro.Library.Models;
+using UmbracoRetro.Library.Helpers;
 
 namespace UmbracoRetro.Controllers
 {
@@ -15,7 +16,8 @@ namespace UmbracoRetro.Controllers
         private const int MAXIMUM_TESTIMONIALS = 2;
         public ActionResult RenderFeatured()
         {
-            List<FeaturedItem> model = GetFeaturedItemsModel();
+            HomeHelper homeHelper = new HomeHelper(CurrentPage, new UmbracoHelper(UmbracoContext.Current));
+            List<FeaturedItem> model = homeHelper.GetFeaturedItemsModel();
 
             // pass this model to the partial view
             return PartialView("~/Views/Partials/Home/_Featured.cshtml", model);

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Umbraco.Core.Models;
 using Umbraco.Web;
 using UmbracoRetro.Library.Models;
+using Archetype.Models;
+
 
 namespace UmbracoRetro.Library.Helpers
 {
@@ -27,19 +29,19 @@ namespace UmbracoRetro.Library.Helpers
             List<FeaturedItem> model = new List<FeaturedItem>();
             //IPublishedContent homePage = Umbraco.AssignedContentItem.AncestorOrSelf(1);
             const int HOME_PAGE_POSITION_IN_PATH = 1;
-            int homePageId = int.Parse(CurrentPage.Path.Split(',')[HOME_PAGE_POSITION_IN_PATH]);
-            IPublishedContent homePage = Umbraco.Content(homePageId);
+            int homePageId = int.Parse(_currentPage.Path.Split(',')[HOME_PAGE_POSITION_IN_PATH]);
+            IPublishedContent homePage = _uHelper.Content(homePageId);
             // get the value of hp - featured 
             ArchetypeModel featuredItems = homePage.GetPropertyValue<ArchetypeModel>("featuredItems");
 
             foreach (ArchetypeFieldsetModel fieldset in featuredItems)
             {
                 var imageId = fieldset.GetValue<string>("image");
-                var mediaItem = Umbraco.Media(imageId);
+                var mediaItem = _uHelper.Media(imageId);
                 string imageUrl = mediaItem.Url;
 
                 var pageId = fieldset.GetValue<string>("page");
-                IPublishedContent linkedToPage = Umbraco.TypedContent(pageId);
+                IPublishedContent linkedToPage = _uHelper.TypedContent(pageId);
                 string linkUrl = "";
 
                 if (linkedToPage != null)
