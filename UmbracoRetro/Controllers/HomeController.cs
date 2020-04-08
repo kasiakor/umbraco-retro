@@ -13,12 +13,13 @@ namespace UmbracoRetro.Controllers
 {
     public class HomeController : SurfaceController
     {
+        HomeHelper _homeHelper => new HomeHelper(CurrentPage, new UmbracoHelper(UmbracoContext.Current));
         private const int MAXIMUM_TESTIMONIALS = 2;
         public ActionResult RenderFeatured()
         {
             //instantiate the helper
-            HomeHelper homeHelper = new HomeHelper(CurrentPage, new UmbracoHelper(UmbracoContext.Current));
-            List<FeaturedItem> model = homeHelper.GetFeaturedItemsModel();
+            //HomeHelper homeHelper = new HomeHelper(CurrentPage, new UmbracoHelper(UmbracoContext.Current));
+            List<FeaturedItem> model = _homeHelper.GetFeaturedItemsModel();
 
             // pass this model to the partial view
             return PartialView("~/Views/Partials/Home/_Featured.cshtml", model);
@@ -41,8 +42,7 @@ namespace UmbracoRetro.Controllers
         public ActionResult RenderBlog()
 
         {
-            HomeHelper homeHelper = new HomeHelper(CurrentPage, new UmbracoHelper(UmbracoContext.Current));
-            LastBlogPosts model = homeHelper.GetLatestBlogPostModel();
+            LastBlogPosts model = _homeHelper.GetLatestBlogPostModel();
             return PartialView("~/Views/Partials/Home/_Blog.cshtml", model);
         }
 
