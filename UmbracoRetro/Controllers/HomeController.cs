@@ -16,6 +16,7 @@ namespace UmbracoRetro.Controllers
         private const int MAXIMUM_TESTIMONIALS = 2;
         public ActionResult RenderFeatured()
         {
+            //instantiate the helper
             HomeHelper homeHelper = new HomeHelper(CurrentPage, new UmbracoHelper(UmbracoContext.Current));
             List<FeaturedItem> model = homeHelper.GetFeaturedItemsModel();
 
@@ -38,13 +39,10 @@ namespace UmbracoRetro.Controllers
         }
 
         public ActionResult RenderBlog()
-        {
-            
-            IPublishedContent homePage = CurrentPage.AncestorOrSelf("home");
-            string title = homePage.GetPropertyValue<string>("lastBlogPostsTitle");
-            string introduction = homePage.GetPropertyValue("lastBlogPostsIntroduction").ToString();
 
-            LastBlogPosts model = new LastBlogPosts(title, introduction);
+        {
+            HomeHelper homeHelper = new HomeHelper(CurrentPage, new UmbracoHelper(UmbracoContext.Current));
+            LastBlogPosts model = homeHelper.GetLatestBlogPostModel();
             return PartialView("~/Views/Partials/Home/_Blog.cshtml", model);
         }
 

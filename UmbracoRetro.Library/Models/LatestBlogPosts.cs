@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace UmbracoRetro.Models
+namespace UmbracoRetro.Library.Models
 {
     public class LastBlogPosts
     {
@@ -16,3 +17,4 @@ namespace UmbracoRetro.Models
         }
     }
 }
+

@@ -530,7 +530,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SiteLayoutController.cs" />
     <Compile Include="Models\BlogPreview.cs" />
-    <Compile Include="Models\LastBlogPosts.cs" />
     <Compile Include="Models\SEO.cs" />
     <Compile Include="Models\NavigationLink.cs" />
     <Compile Include="Models\NavigationListItem.cs" />

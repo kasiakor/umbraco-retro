@@ -223,6 +223,7 @@
   <ItemGroup>
     <Compile Include="Helpers\HomeHelper.cs" />
     <Compile Include="Models\FeaturedItem.cs" />
+    <Compile Include="Models\LatestBlogPosts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

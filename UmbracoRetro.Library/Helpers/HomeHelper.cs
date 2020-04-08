@@ -56,5 +56,15 @@ namespace UmbracoRetro.Library.Helpers
 
             return model;
         }
+
+        public LastBlogPosts GetLatestBlogPostModel()
+        {
+            IPublishedContent homePage = _currentPage.AncestorOrSelf("home");
+            string title = homePage.GetPropertyValue<string>("lastBlogPostsTitle");
+            string introduction = homePage.GetPropertyValue("lastBlogPostsIntroduction").ToString();
+
+            LastBlogPosts model = new LastBlogPosts(title, introduction);
+            return model;
+        }
     }
 }
